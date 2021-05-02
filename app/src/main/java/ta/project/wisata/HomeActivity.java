@@ -55,6 +55,7 @@ public class HomeActivity extends AppCompatActivity {
                         wisata.setAlamat(wisataObject.getString("alamat").toString());
                         wisata.setDeskripsi(wisataObject.getString("deskripsi").toString());
                         wisata.setFasilitas(wisataObject.getString("fasilitas").toString());
+                        wisata.setKategori(wisataObject.getString("kategori").toString());
                         wisatas.add(wisata);
 
                     } catch (JSONException e) {
@@ -65,9 +66,11 @@ public class HomeActivity extends AppCompatActivity {
 
 
                 adapter = new Adapter(getApplicationContext(),wisatas);
-                GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(),2,GridLayoutManager.VERTICAL,false);
+                GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(),2,
+                        RecyclerView.VERTICAL,false);
                 recyclerView.setLayoutManager(gridLayoutManager);
                 recyclerView.setAdapter(adapter);
+                recyclerView.setHasFixedSize(true);
             }
         }, new Response.ErrorListener() {
             @Override

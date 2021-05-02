@@ -7,15 +7,19 @@ public class Wisata {
     private String deskripsi;
     private String alamat;
     private String fasilitas;
+    private String kategori;
+
+
 
     public Wisata(){}
 
-    public Wisata(String namaWisata, String gambar, String deskripsi, String alamat, String fasilitas) {
+    public Wisata(String namaWisata, String gambar, String deskripsi, String alamat, String fasilitas, String kategori) {
         this.namaWisata = namaWisata;
         this.gambar = gambar;
         this.deskripsi = deskripsi;
         this.alamat = alamat;
         this.fasilitas = fasilitas;
+        this.kategori = kategori;
     }
 
     public String getNamaWisata() {
@@ -56,5 +60,13 @@ public class Wisata {
 
     public void setFasilitas(String fasilitas) {
         this.fasilitas = fasilitas;
+    }
+
+    public String getKategori() {
+        return kategori;
+    }
+
+    public void setKategori(String kategori) {
+        this.kategori = kategori;
     }
 }

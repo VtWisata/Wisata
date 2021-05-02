@@ -38,6 +38,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.namaWisata.setText(wisatas.get(position).getNamaWisata());
+        holder.kategori.setText(wisatas.get(position).getKategori());
         Picasso.get().load(wisatas.get(position).getGambar()).into(holder.gambar);
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,6 +50,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
                 intent.putExtra("deskripsi",wisatas.get(position).getDeskripsi());
                 intent.putExtra("alamat",wisatas.get(position).getAlamat());
                 intent.putExtra("fasilitas",wisatas.get(position).getFasilitas());
+                intent.putExtra("kategori",wisatas.get(position).getKategori());
 
                 mContext.startActivity(intent);
             }
@@ -63,13 +65,15 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView namaWisata;
+        TextView kategori;
         ImageView gambar;
         CardView cardView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            namaWisata = itemView.findViewById(R.id.namaWsiata);
+            kategori = itemView.findViewById(R.id.kategori);
+            namaWisata = itemView.findViewById(R.id.namaWisata);
             gambar = itemView.findViewById(R.id.coverWisata);
             cardView = itemView.findViewById(R.id.cardView);
         }
