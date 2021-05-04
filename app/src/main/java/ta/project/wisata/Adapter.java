@@ -51,6 +51,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
                 intent.putExtra("alamat",wisatas.get(position).getAlamat());
                 intent.putExtra("fasilitas",wisatas.get(position).getFasilitas());
                 intent.putExtra("kategori",wisatas.get(position).getKategori());
+                intent.putExtra("koordinat",wisatas.get(position).getKoordinat());
 
                 mContext.startActivity(intent);
             }

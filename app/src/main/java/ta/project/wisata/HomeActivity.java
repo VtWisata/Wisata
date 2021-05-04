@@ -56,6 +56,7 @@ public class HomeActivity extends AppCompatActivity {
                         wisata.setDeskripsi(wisataObject.getString("deskripsi").toString());
                         wisata.setFasilitas(wisataObject.getString("fasilitas").toString());
                         wisata.setKategori(wisataObject.getString("kategori").toString());
+                        wisata.setKoordinat(wisataObject.getString("koordinat").toString());
                         wisatas.add(wisata);
 
                     } catch (JSONException e) {
