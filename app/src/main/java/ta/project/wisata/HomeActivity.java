@@ -26,7 +26,7 @@ import java.util.List;
 public class HomeActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     List<Wisata> wisatas;
-    private static final String JSON_URL = "http://192.168.43.227/android/getproducts.php";
+    private static final String JSON_URL = "http://192.168.43.227/wisata/android/getproducts.php";
     Adapter adapter;
 
     @Override

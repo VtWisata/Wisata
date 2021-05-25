@@ -39,7 +39,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.namaWisata.setText(wisatas.get(position).getNamaWisata());
         holder.kategori.setText(wisatas.get(position).getKategori());
-        Picasso.get().load(wisatas.get(position).getGambar()).into(holder.gambar);
+        Picasso.get().load(wisatas.get(position).getGambar()).resize(400,250).into(holder.gambar);
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

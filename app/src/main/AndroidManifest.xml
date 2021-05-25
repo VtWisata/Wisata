@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Wisata">
-
+        <activity android:name=".Tes"></activity>
+        <activity android:name=".PanoActivity" />
         <activity android:name=".DetailWisata" />
         <activity android:name=".HomeActivity">
             <intent-filter>
@@ -33,7 +34,6 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-
     </application>
 
 </manifest>
