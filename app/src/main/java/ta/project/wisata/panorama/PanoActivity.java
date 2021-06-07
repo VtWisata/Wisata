@@ -1,4 +1,4 @@
-package ta.project.wisata;
+package ta.project.wisata.panorama;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,9 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.google.vr.sdk.widgets.pano.VrPanoramaView;
+
+import ta.project.wisata.R;
+import ta.project.wisata.panorama.ImageLoaderTask;
 
 public class PanoActivity extends AppCompatActivity {
 

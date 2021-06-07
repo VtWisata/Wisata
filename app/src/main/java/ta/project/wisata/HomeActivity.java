@@ -2,12 +2,13 @@ package ta.project.wisata;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -23,6 +24,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import ta.project.wisata.adapter.Adapter;
+
 public class HomeActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     List<Wisata> wisatas;
@@ -33,6 +36,11 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            Window w = getWindow(); // in Activity's onCreate() for instance
+            w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        }
 
         recyclerView = findViewById(R.id.listWisata);
         wisatas = new ArrayList<>();
@@ -57,6 +65,7 @@ public class HomeActivity extends AppCompatActivity {
                         wisata.setFasilitas(wisataObject.getString("fasilitas").toString());
                         wisata.setKategori(wisataObject.getString("kategori").toString());
                         wisata.setKoordinat(wisataObject.getString("koordinat").toString());
+                        wisata.setJamBuka(wisataObject.getString("jamBuka").toString());
                         wisatas.add(wisata);
 
                     } catch (JSONException e) {
@@ -64,7 +73,6 @@ public class HomeActivity extends AppCompatActivity {
                     }
 
                 }
-
 
                 adapter = new Adapter(getApplicationContext(),wisatas);
                 GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(),2,

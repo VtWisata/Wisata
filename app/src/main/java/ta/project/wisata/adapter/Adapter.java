@@ -1,4 +1,4 @@
-package ta.project.wisata;
+package ta.project.wisata.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,6 +15,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+
+import ta.project.wisata.DetailWisata;
+import ta.project.wisata.R;
+import ta.project.wisata.Wisata;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
@@ -43,7 +47,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mContext,DetailWisata.class);
+                Intent intent = new Intent(mContext, DetailWisata.class);
 
                 intent.putExtra("namaWisata",wisatas.get(position).getNamaWisata());
                 intent.putExtra("gambar",wisatas.get(position).getGambar());
@@ -52,6 +56,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
                 intent.putExtra("fasilitas",wisatas.get(position).getFasilitas());
                 intent.putExtra("kategori",wisatas.get(position).getKategori());
                 intent.putExtra("koordinat",wisatas.get(position).getKoordinat());
+                intent.putExtra("jamBuka",wisatas.get(position).getJamBuka());
 
                 mContext.startActivity(intent);
             }
@@ -70,6 +75,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         ImageView gambar;
         CardView cardView;
 
+
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -77,6 +84,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
             namaWisata = itemView.findViewById(R.id.namaWisata);
             gambar = itemView.findViewById(R.id.coverWisata);
             cardView = itemView.findViewById(R.id.cardView);
+
+
         }
     }
 }

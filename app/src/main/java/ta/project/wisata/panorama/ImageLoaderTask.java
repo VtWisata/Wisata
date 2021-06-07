@@ -1,4 +1,4 @@
-package ta.project.wisata;
+package ta.project.wisata.panorama;
 
 import android.content.Intent;
 import android.content.res.AssetManager;

@@ -1,6 +1,8 @@
 package ta.project.wisata;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,16 +19,20 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.squareup.picasso.Picasso;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import ta.project.wisata.adapter.PanoAdapter;
+import ta.project.wisata.panorama.PanoActivity;
 
 public class DetailWisata extends AppCompatActivity implements OnMapReadyCallback {
 
-    private ImageView mGambar, mWifi, mWarung;
-    private TextView mNamaWisata,mDeskripsi,mAlamat,mFasilitas;
+    private ImageView mGambar, mWifi, mResto,mHotel,mMasjid;
+    private TextView mNamaWisata,mDeskripsi,mAlamat,mJamBuka,txtWifi,txtHotel,txtMasjid,txtResto;
     GoogleMap googleMaps;
-    String namaWisata, gambar, deskripsi, alamat, fasilitas;
+    String namaWisata, gambar, deskripsi, alamat, fasilitas, jamBuka;
+
+
+    private RecyclerView recyclerView;
+    private RecyclerView.LayoutManager  layoutManager;
+    PanoAdapter panoAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,40 +43,65 @@ public class DetailWisata extends AppCompatActivity implements OnMapReadyCallbac
         mNamaWisata = findViewById(R.id.namaWisata);
         mDeskripsi = findViewById(R.id.deskripsi);
         mAlamat = findViewById(R.id.alamat);
+        mJamBuka = findViewById(R.id.jamBuka);
         mWifi = findViewById(R.id.wifi);
-        mWarung = findViewById(R.id.resto);
+        mResto = findViewById(R.id.resto);
+        mHotel = findViewById(R.id.hotel);
+        mMasjid = findViewById(R.id.masjid);
+        txtHotel = findViewById(R.id.txtHotel);
+        txtWifi = findViewById(R.id.txtWifi);
+        txtMasjid = findViewById(R.id.txtMasjid);
+        txtResto = findViewById(R.id.txtResto);
 
  //       mFasilitas = findViewById(R.id.fasilitas);
 
-        mGambar.setOnClickListener(new View.OnClickListener() {
+/*        mGambar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(DetailWisata.this,PanoActivity.class);
+                Intent intent = new Intent(DetailWisata.this, PanoActivity.class);
                 intent.putExtra("gambar", gambar);
                 startActivity(intent);
             }
         });
-
+ */
         //show maps
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-
-        // Catching incoming intent11
+        // Catching incoming intent
         Intent intent = getIntent();
         namaWisata = intent.getStringExtra("namaWisata");
         gambar = intent.getStringExtra("gambar");
         deskripsi = intent.getStringExtra("deskripsi");
         alamat = intent.getStringExtra("alamat");
         fasilitas = intent.getStringExtra("fasilitas");
+        jamBuka = intent.getStringExtra("jamBuka");
 
         Log.e("CEK", fasilitas);
 
-        if(fasilitas.toLowerCase().contains("toilet")){
+        if(fasilitas.toLowerCase().contains("resto")){
+            mResto.setVisibility(View.VISIBLE) ;
+            txtResto.setVisibility(View.VISIBLE);
+        }if(fasilitas.toLowerCase().contains("wifi")){
             mWifi.setVisibility(View.VISIBLE);
-        }if(fasilitas.toLowerCase().contains("warung")){
-            mWarung.setVisibility(View.VISIBLE);
+            txtWifi.setVisibility(View.VISIBLE);
+        }if(fasilitas.toLowerCase().contains("hotel")){
+            mHotel.setVisibility(View.VISIBLE);
+            txtHotel.setVisibility(View.VISIBLE);
+        }if(fasilitas.toLowerCase().contains("masjid")){
+            mMasjid.setVisibility(View.VISIBLE);
+            txtMasjid.setVisibility(View.VISIBLE);
         }
+
+        //RecycleView
+        String[] pano = gambar.split(",");
+        String gambarp = pano[0];
+        recyclerView = findViewById(R.id.recycleview);
+        layoutManager = new GridLayoutManager(this,3);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(layoutManager);
+        panoAdapter = new PanoAdapter(getApplicationContext(),pano);
+        recyclerView.setAdapter(panoAdapter);
 
         if (intent != null){
 
@@ -78,7 +109,8 @@ public class DetailWisata extends AppCompatActivity implements OnMapReadyCallbac
             mDeskripsi.setText(deskripsi);
             mAlamat.setText(alamat);
 //            mFasilitas.setText(fasilitas);
-            Picasso.get().load(gambar).resize(400,250).into(mGambar);
+            Picasso.get().load(gambarp).resize(400,280).into(mGambar);
+            mJamBuka.setText(jamBuka);
         }
     }
 
