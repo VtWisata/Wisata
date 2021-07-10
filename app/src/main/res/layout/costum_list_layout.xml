@@ -16,7 +16,7 @@
         android:layout_marginStart="-10dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/ic_categories"
-        android:backgroundTint="#7265EA"
+        android:backgroundTint="#FF9800"
         android:elevation="5dp"
         android:orientation="horizontal">
 

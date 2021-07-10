@@ -25,9 +25,9 @@ import ta.project.wisata.panorama.PanoActivity;
 public class DetailWisata extends AppCompatActivity implements OnMapReadyCallback {
 
     private ImageView mGambar, mWifi, mResto,mHotel,mMasjid;
-    private TextView mNamaWisata,mDeskripsi,mAlamat,mJamBuka,txtWifi,txtHotel,txtMasjid,txtResto;
+    private TextView mNamaWisata,mDeskripsi,mAlamat,mJamBuka,mJamTutup,txtWifi,txtHotel,txtMasjid,txtResto;
     GoogleMap googleMaps;
-    String namaWisata, gambar, deskripsi, alamat, fasilitas, jamBuka;
+    String namaWisata, gambar, deskripsi, alamat, fasilitas, jamBuka, jamTutup;
 
 
     private RecyclerView recyclerView;
@@ -44,6 +44,7 @@ public class DetailWisata extends AppCompatActivity implements OnMapReadyCallbac
         mDeskripsi = findViewById(R.id.deskripsi);
         mAlamat = findViewById(R.id.alamat);
         mJamBuka = findViewById(R.id.jamBuka);
+        mJamTutup = findViewById(R.id.jamTutup);
         mWifi = findViewById(R.id.wifi);
         mResto = findViewById(R.id.resto);
         mHotel = findViewById(R.id.hotel);
@@ -76,6 +77,7 @@ public class DetailWisata extends AppCompatActivity implements OnMapReadyCallbac
         alamat = intent.getStringExtra("alamat");
         fasilitas = intent.getStringExtra("fasilitas");
         jamBuka = intent.getStringExtra("jamBuka");
+        jamTutup = intent.getStringExtra("jamTutup");
 
         Log.e("CEK", fasilitas);
 
@@ -109,8 +111,9 @@ public class DetailWisata extends AppCompatActivity implements OnMapReadyCallbac
             mDeskripsi.setText(deskripsi);
             mAlamat.setText(alamat);
 //            mFasilitas.setText(fasilitas);
-            Picasso.get().load(gambarp).resize(400,280).into(mGambar);
+            Picasso.get().load("http://192.168.43.227/wisataex/android/gambar/"+gambarp).resize(400,280).into(mGambar);
             mJamBuka.setText(jamBuka);
+            mJamTutup.setText(jamTutup);
         }
     }
 

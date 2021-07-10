@@ -13,6 +13,8 @@
         android:roundIcon="@mipmap/logos_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Wisata">
+        <activity android:name=".DetailBerita" />
+        <activity android:name=".BeritaActivity" />
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,12 +22,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Tes" />
         <activity android:name=".panorama.PanoActivity" />
         <activity android:name=".DetailWisata" />
-        <activity android:name=".HomeActivity">
-
-        </activity>
+        <activity android:name=".HomeActivity" />
         <activity android:name=".MainActivity" />
 
         <meta-data

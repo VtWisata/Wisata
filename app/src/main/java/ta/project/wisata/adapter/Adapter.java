@@ -18,13 +18,14 @@ import java.util.List;
 
 import ta.project.wisata.DetailWisata;
 import ta.project.wisata.R;
-import ta.project.wisata.Wisata;
+import ta.project.wisata.db.Wisata;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     LayoutInflater inflater;
     List<Wisata> wisatas;
     Context mContext;
+    private static final String IMG_URL = "http://192.168.43.227/wisataex/android/gambar/";
 
     public Adapter(Context ctx, List<Wisata> wisatas){
         this.inflater = LayoutInflater.from(ctx);
@@ -41,9 +42,12 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        String[] pano = wisatas.get(position).getGambar().split(",");
+        String gambarp = pano[0];
         holder.namaWisata.setText(wisatas.get(position).getNamaWisata());
         holder.kategori.setText(wisatas.get(position).getKategori());
-        Picasso.get().load(wisatas.get(position).getGambar()).resize(400,250).into(holder.gambar);
+        Picasso.get().load(IMG_URL+gambarp)
+                .resize(400,250).into(holder.gambar);
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,6 +61,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
                 intent.putExtra("kategori",wisatas.get(position).getKategori());
                 intent.putExtra("koordinat",wisatas.get(position).getKoordinat());
                 intent.putExtra("jamBuka",wisatas.get(position).getJamBuka());
+                intent.putExtra("jamTutup",wisatas.get(position).getJamTutup());
 
                 mContext.startActivity(intent);
             }
@@ -75,8 +80,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         ImageView gambar;
         CardView cardView;
 
-
-
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -84,7 +87,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
             namaWisata = itemView.findViewById(R.id.namaWisata);
             gambar = itemView.findViewById(R.id.coverWisata);
             cardView = itemView.findViewById(R.id.cardView);
-
 
         }
     }
