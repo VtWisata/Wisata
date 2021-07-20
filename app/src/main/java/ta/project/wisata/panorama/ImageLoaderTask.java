@@ -42,7 +42,7 @@ public class ImageLoaderTask extends AsyncTask<AssetManager, Void, Bitmap> {
             return null;
         }*/
         try {
-            URL url = new URL("http://192.168.43.227/wisata/android/gambar/"+assetName);
+            URL url = new URL("http://panoramawisata.000webhostapp.com/android/gambar/"+assetName);
             Bitmap image = BitmapFactory.decodeStream(url.openConnection().getInputStream());
             return image;
         } catch(IOException e) {

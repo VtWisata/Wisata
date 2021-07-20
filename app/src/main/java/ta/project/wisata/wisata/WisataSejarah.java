@@ -1,4 +1,4 @@
-package ta.project.wisata;
+package ta.project.wisata.wisata;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -21,19 +21,20 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import ta.project.wisata.R;
 import ta.project.wisata.adapter.Adapter;
 import ta.project.wisata.db.Wisata;
 
-public class HomeActivity extends AppCompatActivity {
+public class WisataSejarah extends AppCompatActivity {
     RecyclerView recyclerView;
     List<Wisata> wisatas;
-    private static final String JSON_URL = "http://192.168.43.227/wisataex/android/getproducts.php";
+    private static final String JSON_URL = "http://panoramawisata.000webhostapp.com/api_wisataSejarah";
     Adapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_wisata_sejarah);
 
         recyclerView = findViewById(R.id.listWisata);
         wisatas = new ArrayList<>();
@@ -42,7 +43,8 @@ public class HomeActivity extends AppCompatActivity {
 
     private void extractWisata() {
         RequestQueue queue = Volley.newRequestQueue(this);
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, JSON_URL, null, new Response.Listener<JSONArray>() {
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET,
+                JSON_URL, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 for (int i = 0; i < response.length(); i++) {
@@ -55,7 +57,6 @@ public class HomeActivity extends AppCompatActivity {
                         wisata.setAlamat(wisataObject.getString("alamat").toString());
                         wisata.setDeskripsi(wisataObject.getString("deskripsi").toString());
                         wisata.setFasilitas(wisataObject.getString("fasilitas").toString());
-                        wisata.setKategori(wisataObject.getString("kategori").toString());
                         wisata.setKoordinat(wisataObject.getString("koordinat").toString());
                         wisata.setJamBuka(wisataObject.getString("jamBuka").toString());
                         wisata.setJamTutup(wisataObject.getString("jamTutup").toString());

@@ -26,7 +26,7 @@ public class AdapterBerita extends RecyclerView.Adapter<AdapterBerita.ViewHolder
     LayoutInflater inflater;
     List<Berita> beritas;
     Context mContext;
-    private static final String IMG_URL = "http://192.168.43.227/wisataex/android/gambar/";
+    private static final String IMG_URL = "http://panoramawisata.000webhostapp.com/android/gambar/";
 
     public AdapterBerita(Context ctx, List<Berita> beritas){
         this.inflater = LayoutInflater.from(ctx);

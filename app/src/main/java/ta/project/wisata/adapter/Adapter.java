@@ -25,7 +25,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     LayoutInflater inflater;
     List<Wisata> wisatas;
     Context mContext;
-    private static final String IMG_URL = "http://192.168.43.227/wisataex/android/gambar/";
+    private static final String IMG_URL = "http://panoramawisata.000webhostapp.com/android/gambar/";
 
     public Adapter(Context ctx, List<Wisata> wisatas){
         this.inflater = LayoutInflater.from(ctx);
@@ -45,7 +45,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         String[] pano = wisatas.get(position).getGambar().split(",");
         String gambarp = pano[0];
         holder.namaWisata.setText(wisatas.get(position).getNamaWisata());
-        holder.kategori.setText(wisatas.get(position).getKategori());
+        holder.alamat.setText(wisatas.get(position).getAlamat());
         Picasso.get().load(IMG_URL+gambarp)
                 .resize(400,250).into(holder.gambar);
         holder.cardView.setOnClickListener(new View.OnClickListener() {
@@ -58,7 +58,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
                 intent.putExtra("deskripsi",wisatas.get(position).getDeskripsi());
                 intent.putExtra("alamat",wisatas.get(position).getAlamat());
                 intent.putExtra("fasilitas",wisatas.get(position).getFasilitas());
-                intent.putExtra("kategori",wisatas.get(position).getKategori());
                 intent.putExtra("koordinat",wisatas.get(position).getKoordinat());
                 intent.putExtra("jamBuka",wisatas.get(position).getJamBuka());
                 intent.putExtra("jamTutup",wisatas.get(position).getJamTutup());
@@ -75,16 +74,15 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView namaWisata;
-        TextView kategori;
+        TextView namaWisata,alamat;
         ImageView gambar;
         CardView cardView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            kategori = itemView.findViewById(R.id.kategori);
             namaWisata = itemView.findViewById(R.id.namaWisata);
+            alamat = itemView.findViewById(R.id.alamat);
             gambar = itemView.findViewById(R.id.coverWisata);
             cardView = itemView.findViewById(R.id.cardView);
 

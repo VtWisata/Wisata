@@ -37,7 +37,7 @@ public class DetailBerita extends AppCompatActivity {
             gPenulis.setText(penulis);
             gJudul.setText(judul);
             gIsi.setText(isi);
-            Picasso.get().load("http://192.168.43.227/wisataex/android/gambar/" + gambar).resize(400, 280).into(gBerita);
+            Picasso.get().load("http://panoramawisata.000webhostapp.com/android/gambar/" + gambar).resize(400, 280).into(gBerita);
         }
     }
 }

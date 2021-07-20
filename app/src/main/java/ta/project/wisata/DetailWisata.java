@@ -110,8 +110,8 @@ public class DetailWisata extends AppCompatActivity implements OnMapReadyCallbac
             mNamaWisata.setText(namaWisata);
             mDeskripsi.setText(deskripsi);
             mAlamat.setText(alamat);
-//            mFasilitas.setText(fasilitas);
-            Picasso.get().load("http://192.168.43.227/wisataex/android/gambar/"+gambarp).resize(400,280).into(mGambar);
+            Picasso.get().load("http://panoramawisata.000webhostapp.com/android/gambar/"+gambarp).
+                    resize(400,280).into(mGambar);
             mJamBuka.setText(jamBuka);
             mJamTutup.setText(jamTutup);
         }

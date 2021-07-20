@@ -116,31 +116,6 @@
                 app:layout_constraintStart_toEndOf="@+id/namaPenulis"
                 app:layout_constraintTop_toTopOf="@+id/namaPenulis" />
 
-            <TextView
-                android:id="@+id/namaSumber"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/montserrat_bold"
-                android:text="Sumber : "
-                android:textSize="14dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.105"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/namaPenulis"
-                android:layout_marginBottom="32dp"/>
-
-            <TextView
-                android:id="@+id/sumber"
-                android:layout_width="48dp"
-                android:layout_height="17dp"
-                android:fontFamily="@font/montserrat"
-                android:text="sumber"
-                android:textSize="14dp"
-                app:layout_constraintBottom_toBottomOf="@id/namaSumber"
-                app:layout_constraintStart_toEndOf="@+id/namaSumber"
-                app:layout_constraintTop_toTopOf="@+id/namaSumber" />
-
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

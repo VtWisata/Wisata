@@ -7,20 +7,18 @@ public class Wisata {
     private String deskripsi;
     private String alamat;
     private String fasilitas;
-    private String kategori;
     private String koordinat;
     private String jamBuka;
     private String jamTutup;
 
     public Wisata(){}
 
-    public Wisata(String namaWisata, String gambar, String deskripsi, String alamat, String fasilitas, String kategori, String koordinat, String jamBuka, String jamTutup) {
+    public Wisata(String namaWisata, String gambar, String deskripsi, String alamat, String fasilitas, String koordinat, String jamBuka, String jamTutup) {
         this.namaWisata = namaWisata;
         this.gambar = gambar;
         this.deskripsi = deskripsi;
         this.alamat = alamat;
         this.fasilitas = fasilitas;
-        this.kategori = kategori;
         this.koordinat = koordinat;
         this.jamBuka = jamBuka;
         this.jamBuka = jamTutup;
@@ -65,14 +63,6 @@ public class Wisata {
 
     public void setFasilitas(String fasilitas) {
         this.fasilitas = fasilitas;
-    }
-
-    public String getKategori() {
-        return kategori;
-    }
-
-    public void setKategori(String kategori) {
-        this.kategori = kategori;
     }
 
     public String getKoordinat() {

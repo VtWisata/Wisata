@@ -6,7 +6,9 @@ import androidx.cardview.widget.CardView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
+
+import ta.project.wisata.wisata.HomeActivity;
+import ta.project.wisata.wisata.WisataSejarah;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,14 +26,14 @@ public class MainActivity extends AppCompatActivity {
         wisata.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,HomeActivity.class));
+                startActivity(new Intent(MainActivity.this, HomeActivity.class));
             }
         });
 
         berita.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,BeritaActivity.class));
+                startActivity(new Intent(MainActivity.this, WisataSejarah.class));
             }
         });
     }

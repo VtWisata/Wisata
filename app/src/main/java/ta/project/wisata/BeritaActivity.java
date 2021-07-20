@@ -27,7 +27,7 @@ import ta.project.wisata.db.Berita;
 public class BeritaActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     List<Berita> beritas;
-    private static final String JSON_URL = "http://192.168.43.227/wisataex/android/getBeritas.php";
+    private static final String JSON_URL = "http://panoramawisata.000webhostapp.com/api_berita";
     AdapterBerita adapterBerita;
 
     @Override

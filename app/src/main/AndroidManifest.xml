@@ -13,6 +13,10 @@
         android:roundIcon="@mipmap/logos_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Wisata">
+        <activity android:name=".wisata.WisataKuliner"></activity>
+        <activity android:name=".wisata.WisataTaman" />
+        <activity android:name=".wisata.WisataWahana" />
+        <activity android:name=".wisata.WisataSejarah" />
         <activity android:name=".DetailBerita" />
         <activity android:name=".BeritaActivity" />
         <activity android:name=".SplashScreen">
@@ -24,7 +28,7 @@
         </activity>
         <activity android:name=".panorama.PanoActivity" />
         <activity android:name=".DetailWisata" />
-        <activity android:name=".HomeActivity" />
+        <activity android:name=".wisata.HomeActivity" />
         <activity android:name=".MainActivity" />
 
         <meta-data

@@ -33,7 +33,7 @@ public class PanoAdapter extends RecyclerView.Adapter<PanoAdapter.ImageViewHolde
     @Override
     public void onBindViewHolder(ImageViewHolder holder, int position) {
         String pano_id =  pano[position];
-        Picasso.get().load("http://192.168.43.227/wisataex/android/gambar/"+pano_id).resize(250,250).into(holder.pano);
+        Picasso.get().load("http://panoramawisata.000webhostapp.com/android/gambar/"+pano_id).resize(250,250).into(holder.pano);
         holder.pano.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
