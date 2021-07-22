@@ -1,4 +1,4 @@
-package ta.project.wisata;
+package ta.project.wisata.detail;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.squareup.picasso.Picasso;
+
+import ta.project.wisata.R;
 
 public class DetailBerita extends AppCompatActivity {
     private ImageView gBerita;

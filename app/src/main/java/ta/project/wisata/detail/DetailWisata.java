@@ -1,4 +1,4 @@
-package ta.project.wisata;
+package ta.project.wisata.detail;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -19,6 +19,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.squareup.picasso.Picasso;
 
+import ta.project.wisata.R;
 import ta.project.wisata.adapter.PanoAdapter;
 import ta.project.wisata.panorama.PanoActivity;
 

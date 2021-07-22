@@ -1,4 +1,4 @@
-package ta.project.wisata;
+package ta.project.wisata.berita;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -21,6 +21,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import ta.project.wisata.R;
 import ta.project.wisata.adapter.AdapterBerita;
 import ta.project.wisata.db.Berita;
 

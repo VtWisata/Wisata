@@ -16,36 +16,35 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import ta.project.wisata.detail.DetailWisata;
 import ta.project.wisata.R;
+import ta.project.wisata.db.Berita;
 import ta.project.wisata.db.Wisata;
+import ta.project.wisata.detail.DetailBerita;
+import ta.project.wisata.detail.DetailWisata;
 
-public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
+public class BerandaWisata extends RecyclerView.Adapter<BerandaWisata.WisataViewHolder> {
 
-    LayoutInflater inflater;
     List<Wisata> wisatas;
-    Context mContext;
     private static final String IMG_URL = "http://panoramawisata.000webhostapp.com/android/gambar/";
+    Context mContext;
 
-    public Adapter(Context ctx, List<Wisata> wisatas){
-        this.inflater = LayoutInflater.from(ctx);
-        this.wisatas = wisatas;
+    public BerandaWisata(Context ctx, List<Wisata> wisatas ) {
         this.mContext = ctx;
-    }
-
-    @NonNull
-    @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.costum_list_layout,parent,false);
-        return new ViewHolder(view);
+        this.wisatas = wisatas;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public WisataViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.home_wisata, parent, false);
+        return new WisataViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull WisataViewHolder holder, int position) {
         String[] pano = wisatas.get(position).getGambar().split(",");
         String gambarp = pano[0];
-        holder.namaWisata.setText(wisatas.get(position).getNamaWisata());
-        holder.alamat.setText(wisatas.get(position).getAlamat());
+        holder.nama.setText(wisatas.get(position).getNamaWisata());
+        holder.desc.setText(wisatas.get(position).getDeskripsi());
         Picasso.get().load(IMG_URL+gambarp)
                 .resize(400,250).into(holder.gambar);
         holder.cardView.setOnClickListener(new View.OnClickListener() {
@@ -65,7 +64,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
                 mContext.startActivity(intent);
             }
         });
-
     }
 
     @Override
@@ -73,19 +71,19 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         return wisatas.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView namaWisata,alamat;
+    public static class WisataViewHolder extends RecyclerView.ViewHolder{
+
         ImageView gambar;
+        TextView nama,desc;
         CardView cardView;
 
-        public ViewHolder(@NonNull View itemView) {
+        public WisataViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            namaWisata = itemView.findViewById(R.id.namaWisata);
-            alamat = itemView.findViewById(R.id.alamat);
-            gambar = itemView.findViewById(R.id.coverWisata);
+            gambar = itemView.findViewById(R.id.gWisata);
+            nama = itemView.findViewById(R.id.nWisata);
+            desc = itemView.findViewById(R.id.dWisata);
             cardView = itemView.findViewById(R.id.cardView);
-
         }
     }
 }

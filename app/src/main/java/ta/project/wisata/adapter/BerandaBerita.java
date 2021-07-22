@@ -8,38 +8,40 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import ta.project.wisata.detail.DetailBerita;
 import ta.project.wisata.R;
 import ta.project.wisata.db.Berita;
+import ta.project.wisata.detail.DetailBerita;
 
-public class AdapterBerita extends RecyclerView.Adapter<AdapterBerita.ViewHolder>{
-    LayoutInflater inflater;
+public class BerandaBerita extends RecyclerView.Adapter<BerandaBerita.BeritaViewHolder> {
+
     List<Berita> beritas;
     Context mContext;
     private static final String IMG_URL = "http://panoramawisata.000webhostapp.com/android/gambar/";
 
-    public AdapterBerita(Context ctx, List<Berita> beritas){
-        this.inflater = LayoutInflater.from(ctx);
+    public BerandaBerita(Context ctx, List<Berita> beritas) {
         this.beritas = beritas;
         this.mContext = ctx;
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.list_berita,parent,false);
-        return new ViewHolder(view);
+    public BeritaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.home_berita, parent, false);
+        return new BeritaViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(AdapterBerita.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull BerandaBerita.BeritaViewHolder holder, int position) {
         holder.judul.setText(beritas.get(position).getJudul());
+        holder.desc.setText(beritas.get(position).getIsi());
         Picasso.get().load(IMG_URL+beritas.get(position).getGambar())
                 .resize(400,250).into(holder.gambar);
         holder.cardView.setOnClickListener(new View.OnClickListener() {
@@ -61,16 +63,19 @@ public class AdapterBerita extends RecyclerView.Adapter<AdapterBerita.ViewHolder
         return beritas.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView judul;
+    public static class BeritaViewHolder extends RecyclerView.ViewHolder{
+
         ImageView gambar;
+        TextView judul,desc;
         CardView cardView;
-        public ViewHolder(View itemView) {
+
+        public BeritaViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            judul = itemView.findViewById(R.id.judul);
-            gambar = itemView.findViewById(R.id.gBerita);
             cardView = itemView.findViewById(R.id.cardView);
+            gambar = itemView.findViewById(R.id.gBerita);
+            judul = itemView.findViewById(R.id.jBerita);
+            desc = itemView.findViewById(R.id.dBerita);
         }
     }
 }

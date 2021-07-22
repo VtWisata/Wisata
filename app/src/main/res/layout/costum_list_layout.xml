@@ -50,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="5dp"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                android:textColor="@color/black"
+                android:textColor="#424242"
                 android:text="alamat"
                 android:textStyle="italic"
                 android:fontFamily="@font/montserrat"
